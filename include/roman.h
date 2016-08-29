@@ -7,5 +7,3 @@ struct RomanLetter {
   int value;
 };
   
-
-

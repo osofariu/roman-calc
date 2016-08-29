@@ -1,11 +1,18 @@
 #include <stdio.h>
 #include "roman.h"
 
-struct RomanLetter letter_I = {'I',  1};
+struct RomanLetter romanLetters[] = {
+  {'I',  1},{'V', 5}
+};
+
 
 int lookup_roman_letter(char letter) {
-  if (letter == letter_I.letter) {
-    return letter_I.value;
+  int letter_ct;
+  for (letter_ct = 0; letter_ct < sizeof(romanLetters); letter_ct++) {
+    struct RomanLetter roman_letter = romanLetters[letter_ct];
+    if (letter == roman_letter.letter) {
+      return roman_letter.value;
+    }
   }
   return 0;
 }
