@@ -5,12 +5,12 @@
 START_TEST (test_roman_values)
 {
   int val = roman_value("I");
-  ck_assert_int_rq(1, val);
+  ck_assert_int_eq(1, val);
 }
 END_TEST
 
 
-Suite * types_suite(void) {
+Suite * roman_numerals_suite(void) {
     Suite *s;
     TCase *tc_core;
 
@@ -28,7 +28,7 @@ int main(int argc, char* argv[]) {
     Suite *s;
     SRunner *sr;
 
-    s = types_suite();
+    s = roman_numerals_suite();
     sr = srunner_create(s);
 
     srunner_run_all(sr, CK_NORMAL);

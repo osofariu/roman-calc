@@ -17,7 +17,10 @@ OBJS := $(patsubst %,$(OBJDIR)/%,$(_SRCS:c=o))
 
 all: run
 
-run: $(OBJS)
+run: roman
+	./${TARGETS}
+
+roman: $(OBJS)
 	$(CC) $(LDFLAGS) $^ $(LIBS) -o $@ 
 
 createobj:
