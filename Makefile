@@ -11,7 +11,7 @@ OBJDIR := obj
 SRCDIR := src
 INCDIR := include/
 
-_SRCS := roman.c test_roman.c
+_SRCS := roman.c test_roman.c strings.c
 SRCS := $(patsubst %,$(SRCDIR)/%,$(_SRCS))
 OBJS := $(patsubst %,$(OBJDIR)/%,$(_SRCS:c=o))
 
