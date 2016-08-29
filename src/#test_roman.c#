@@ -11,6 +11,8 @@ START_TEST (test_roman_values)
   ck_assert_int_eq(10, roman_value("X"));
   ck_assert_int_eq(50, roman_value("L"));
   ck_assert_int_eq(100, roman_value("C"));
+  ck_assert_int_eq(500, roman_value("D"));
+  ck_assert_int_eq(1000, roman_value("Mxs"));
 }
 END_TEST
 
