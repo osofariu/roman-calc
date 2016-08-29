@@ -6,7 +6,7 @@ LIBS= -l:libcheck.a  -lm -lrt -lpthread -lsubunit
 .SUFFIXES:
 .SUFFIXES: .c .o
 
-TARGETS=run
+TARGETS=roman
 OBJDIR := obj
 SRCDIR := src
 INCDIR := include/

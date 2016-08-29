@@ -4,8 +4,10 @@
 
 START_TEST (test_roman_values)
 {
-  int val = roman_value("I");
-  ck_assert_int_eq(1, val);
+  ck_assert_int_eq(1, roman_value("I"));
+  ck_assert_int_eq(2, roman_value("II"));
+  ck_assert_int_eq(3, roman_value("III"));
+  ck_assert_int_eq(5, roman_value("V"));
 }
 END_TEST
 
