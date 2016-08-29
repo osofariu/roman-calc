@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "roman.h"
 
-START_TEST (test_roman_values)
+START_TEST (test_roman_values_additive)
 {
   ck_assert_int_eq(1, roman_value("I"));
   ck_assert_int_eq(2, roman_value("II"));
@@ -11,9 +11,16 @@ START_TEST (test_roman_values)
   ck_assert_int_eq(10, roman_value("X"));
   ck_assert_int_eq(50, roman_value("L"));
   ck_assert_int_eq(100, roman_value("C"));
+  ck_assert_int_eq(500, roman_value("D"));
+  ck_assert_int_eq(1000, roman_value("Mxs"));
 }
 END_TEST
 
+START_TEST (test_roman_values_lesser_subtract)
+{
+  ck_assert_int_eq(4, roman_value("IV"));
+}
+END_TEST
 
 Suite * roman_numerals_suite(void) {
     Suite *s;
@@ -22,7 +29,8 @@ Suite * roman_numerals_suite(void) {
     s = suite_create("Roman Numerals");
     tc_core = tcase_create("roman-values");
 
-    tcase_add_test(tc_core, test_roman_values);
+    tcase_add_test(tc_core, test_roman_values_additive);
+    tcase_add_test(tc_core, test_roman_values_lesser_subtract);
     suite_add_tcase(s, tc_core);
 
     return s;
