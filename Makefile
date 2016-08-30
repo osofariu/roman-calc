@@ -3,7 +3,7 @@ CFLAGS=-Wall -g
 LDFLAGS= -Wall -L/usr/lib/x86_64-linux-gnu -L/lib/x86_64-linux-gnu -L /lib64  
 LIBS= -l:libcheck.a  -lm -lrt -lpthread -lsubunit
 
-TARGETS := roman string_test
+TARGETS := test-roman test-strings
 OBJDIR := obj
 SRCDIR := src
 INCLUDEDIR := include
