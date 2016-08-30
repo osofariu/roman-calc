@@ -1,11 +1,17 @@
+#ifndef FILE_ROMAN_H
+#define FILE_ROMAN_H
+
+
 #include <stdio.h>
 #include "bool.h"
 #include "strings.h"
 
-int roman_value(char *roman_str);
 
 struct RomanLetter {
   char letter;
   int value;
 };
   
+
+
+#endif

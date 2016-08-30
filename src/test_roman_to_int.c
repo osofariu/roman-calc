@@ -1,6 +1,6 @@
 #include <check.h>
 #include <stdlib.h>
-#include "roman.h"
+#include "roman_to_int.h"
 
 START_TEST (test_roman_values)
 {
@@ -19,7 +19,7 @@ START_TEST (test_roman_values_additive)
   ck_assert_int_eq(2, roman_value("II"));
   ck_assert_int_eq(3, roman_value("III"));
   ck_assert_int_eq(6, roman_value("VI"));
-  ck_assert_int_eq(1000, roman_value("Mxs")); // TODO add test to fix this (invalid)
+  //ck_assert_int_eq(1000, roman_value("Mxs"));
 }
 END_TEST
 
