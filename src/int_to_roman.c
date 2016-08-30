@@ -10,6 +10,11 @@ char *roman_numeral(int numeralValue, char* romanNumeralOutput) {
       outputPtr += 1;
       numeralValue -= 1000;
     }
+    else if (numeralValue >= 900) {
+      strcpy(outputPtr, "CM");
+      outputPtr += 2;
+      numeralValue -= 900;
+    }
     else if (numeralValue >= 1) {
       strcpy(outputPtr, "I");
       outputPtr +=1;

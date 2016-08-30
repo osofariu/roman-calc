@@ -7,6 +7,7 @@ START_TEST (test_int_to_single_roman_letter)
   char expectedNumeral[50] = "";
   ck_assert_str_eq("I", roman_numeral(1, expectedNumeral));
   ck_assert_str_eq("M", roman_numeral(1000, expectedNumeral));
+  ck_assert_str_eq("CM", roman_numeral(900, expectedNumeral));
 }
 END_TEST
 
