@@ -3,28 +3,28 @@ CFLAGS=-Wall -g
 LDFLAGS= -Wall -L/usr/lib/x86_64-linux-gnu -L/lib/x86_64-linux-gnu -L /lib64  
 LIBS= -l:libcheck.a  -lm -lrt -lpthread -lsubunit
 
-TARGETS := test-roman test-strings
+TARGETS := test_roman_to_int test_strings
 OBJDIR := obj
 SRCDIR := src
 INCLUDEDIR := include
 
-all: test-roman test-strings
-	./test-roman
-	./test-strings
+all: test_roman_to_int test_strings
+	./test_roman_to_int
+	./test_strings
 
-test-roman: $(OBJDIR)/roman.o $(OBJDIR)/strings.o $(OBJDIR)/test_roman.o
+test_roman_to_int: $(OBJDIR)/roman_to_int.o $(OBJDIR)/strings.o $(OBJDIR)/test_roman_to_int.o
 	$(CC) $(LDFLAGS) $^ $(LIBS) -o $@ 
 
-test-strings: $(OBJDIR)/strings.o $(OBJDIR)/test_strings.o
+test_strings: $(OBJDIR)/strings.o $(OBJDIR)/test_strings.o
 	$(CC) $(LDFLAGS) $^ $(LIBS) -o $@ 
 
 createobj:
 	mkdir -p $(OBJDIR)
 
-$(OBJDIR)/test_roman.o: $(SRCDIR)/test_roman.c
+$(OBJDIR)/test_roman_to_int.o: $(SRCDIR)/test_roman_to_int.c
 	$(CC) $(CFLAGS) -o $@ -I$(INCLUDEDIR) -c $<
 
-$(OBJDIR)/roman.o: $(SRCDIR)/roman.c
+$(OBJDIR)/roman_to_int.o: $(SRCDIR)/roman_to_int.c
 	$(CC) $(CFLAGS) -o $@ -I$(INCLUDEDIR) -c $<
 
 $(OBJDIR)/test_strings.o: $(SRCDIR)/test_strings.c
