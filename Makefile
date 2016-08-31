@@ -8,45 +8,31 @@ OBJDIR := obj
 SRCDIR := src
 INCLUDEDIR := include
 
+ROMAN_SOURCE_FILES := $(wildcard src/*roman*.c) strings.c
+ROMAN_SOURCE_NAMES := $(patsubst src/%,%,$(ROMAN_SOURCE_FILES))
+ROMAN_OBJS :=  $(patsubst %,$(OBJDIR)/%,$(ROMAN_SOURCE_NAMES:c=o))
+
+$(info $$ROMAN_SOURCE_FILES is [${ROMAN_SOURCE_FILES}])
+$(info $$ROMAN_SOURCENAMES is [${ROMAN_SOURCE_NAMES}])
+$(info $$ROMAN_OBJS is [${ROMAN_OBJS}])
+
 all: test_roman_runner test_strings
 	./test_roman_runner
 	./test_strings
 
-test_roman_runner: $(OBJDIR)/test_roman_runner.o $(OBJDIR)/roman_to_int.o $(OBJDIR)/int_to_roman.o $(OBJDIR)/strings.o $(OBJDIR)/test_roman_to_int.o $(OBJDIR)/test_int_to_roman.o $(OBJDIR)/roman_calculator.o $(OBJDIR)/test_roman_calculator.o
+# will build the roman calculator main that runs all tests 
+test_roman_runner: $(ROMAN_OBJS)
 	$(CC) $(LDFLAGS) $^ $(LIBS) -o $@ 
 
-test_strings: $(OBJDIR)/strings.o $(OBJDIR)/test_strings.o
-	$(CC) $(LDFLAGS) $^ $(LIBS) -o $@ 
-
-createobj:
+create-obj:
 	mkdir -p $(OBJDIR)
 
-$(OBJDIR)/test_roman_runner.o: $(SRCDIR)/test_roman_runner.c | createobj
+$(OBJDIR)/%.o: $(SRCDIR)/%.c | create-obj
 	$(CC) $(CFLAGS) -o $@ -I$(INCLUDEDIR) -c $<
 
-$(OBJDIR)/test_roman_to_int.o: $(SRCDIR)/test_roman_to_int.c | createobj
-	$(CC) $(CFLAGS) -o $@ -I$(INCLUDEDIR) -c $<
-
-$(OBJDIR)/test_int_to_roman.o: $(SRCDIR)/test_int_to_roman.c | createobj
-	$(CC) $(CFLAGS) -o $@ -I$(INCLUDEDIR) -c $<
-
-$(OBJDIR)/test_roman_calculator.o: $(SRCDIR)/test_roman_calculator.c | createobj
-	$(CC) $(CFLAGS) -o $@ -I$(INCLUDEDIR) -c $<
-
-$(OBJDIR)/roman_calculator.o: $(SRCDIR)/roman_calculator.c | createobj
-	$(CC) $(CFLAGS) -o $@ -I$(INCLUDEDIR) -c $<
-
-$(OBJDIR)/roman_to_int.o: $(SRCDIR)/roman_to_int.c | createobj
-	$(CC) $(CFLAGS) -o $@ -I$(INCLUDEDIR) -c $<
-
-$(OBJDIR)/int_to_roman.o: $(SRCDIR)/int_to_roman.c | createobj
-	$(CC) $(CFLAGS) -o $@ -I$(INCLUDEDIR) -c $<
-
-$(OBJDIR)/test_strings.o: $(SRCDIR)/test_strings.c | createobj
-	$(CC) $(CFLAGS) -o $@ -I$(INCLUDEDIR) -c $<
-
-$(OBJDIR)/strings.o: $(SRCDIR)/strings.c  | createobj
-	$(CC) $(CFLAGS) -o $@ -I$(INCLUDEDIR) -c $<
+# will buile the string library main that run all tests
+test_strings: $(OBJDIR)/strings.o $(OBJDIR)/test_strings.o
+	$(CC) $(LDFLAGS) $^ $(LIBS) -o $@ 
 
 clean:
 	rm -f $(TARGETS) $(OBJDIR)/*.o
