@@ -12,8 +12,7 @@ all: test_roman_runner test_strings
 	./test_roman_runner
 	./test_strings
 
-
-test_roman_runner: $(OBJDIR)/test_roman_runner.o $(OBJDIR)/roman_to_int.o $(OBJDIR)/int_to_roman.o $(OBJDIR)/strings.o $(OBJDIR)/test_roman_to_int.o $(OBJDIR)/test_int_to_roman.o
+test_roman_runner: $(OBJDIR)/test_roman_runner.o $(OBJDIR)/roman_to_int.o $(OBJDIR)/int_to_roman.o $(OBJDIR)/strings.o $(OBJDIR)/test_roman_to_int.o $(OBJDIR)/test_int_to_roman.o $(OBJDIR)/roman_calculator.o $(OBJDIR)/test_roman_calculator.o
 	$(CC) $(LDFLAGS) $^ $(LIBS) -o $@ 
 
 test_strings: $(OBJDIR)/strings.o $(OBJDIR)/test_strings.o
@@ -29,6 +28,12 @@ $(OBJDIR)/test_roman_to_int.o: $(SRCDIR)/test_roman_to_int.c | createobj
 	$(CC) $(CFLAGS) -o $@ -I$(INCLUDEDIR) -c $<
 
 $(OBJDIR)/test_int_to_roman.o: $(SRCDIR)/test_int_to_roman.c | createobj
+	$(CC) $(CFLAGS) -o $@ -I$(INCLUDEDIR) -c $<
+
+$(OBJDIR)/test_roman_calculator.o: $(SRCDIR)/test_roman_calculator.c | createobj
+	$(CC) $(CFLAGS) -o $@ -I$(INCLUDEDIR) -c $<
+
+$(OBJDIR)/roman_calculator.o: $(SRCDIR)/roman_calculator.c | createobj
 	$(CC) $(CFLAGS) -o $@ -I$(INCLUDEDIR) -c $<
 
 $(OBJDIR)/roman_to_int.o: $(SRCDIR)/roman_to_int.c | createobj
