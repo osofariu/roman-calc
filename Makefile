@@ -17,7 +17,7 @@ $(info $$ROMAN_SOURCENAMES is [${ROMAN_SOURCE_NAMES}])
 $(info $$ROMAN_OBJS is [${ROMAN_OBJS}])
 
 all: test_roman_runner test_char_operations
-	./test_roman_runner
+	./test_roman_runner tests
 	./test_char_operations
 
 # will build the roman calculator main that runs all tests 
