@@ -6,6 +6,7 @@ START_TEST (test_add_two_roman_numerals)
 {
   char romanSum[50];
   ck_assert_str_eq("II", add_roman_numerals("I","I", romanSum));
+  ck_assert_str_eq("MCMLXXII", add_roman_numerals("MCMII", "LXX", romanSum));
 }
 END_TEST
 
