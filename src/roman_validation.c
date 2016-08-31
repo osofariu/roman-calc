@@ -1,6 +1,7 @@
 #include "bool.h"
 #include "roman_validation.h"
 #include "char_operations.h"
+#include "roman_to_int.h"
 
 bool validate_consecutive_char_ct(char* roman_numeral, char c, int max_repeating, char* message) {
   int count = count_consecutive(roman_numeral, c);
@@ -37,8 +38,19 @@ bool validate_vld_ct(char *roman_numeral, char *message) {
 }
   
 
+bool validate_max_numeral(char* roman_numeral, char *message) {
+  int romanValue = roman_value(roman_numeral);
+  if (romanValue > 3999) {
+    strcpy(message, "Roman numeral too large.");
+    return false;
+  }
+  strcpy(message, "");
+  return true;
+}
+
 bool validate_roman_numeral(char* roman_numeral, char* message) {
   if (validate_consecutive_ixc_ct(roman_numeral, message) == false) return false;
   if (validate_vld_ct(roman_numeral, message) == false) return false;
+  if (validate_max_numeral(roman_numeral, message) == false) return false;
   return true;
 }

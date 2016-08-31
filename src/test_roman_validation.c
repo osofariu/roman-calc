@@ -13,13 +13,7 @@ START_TEST (test_validate_max_repeating_ixc)
   
   ck_assert_int_eq(false, validate_roman_numeral("CCCC", validationMessage));
   ck_assert_str_eq("Invalid roman numeral: too many consecutive I, X, or C", validationMessage); 
-}
-END_TEST
 
-
-START_TEST (test_validate_max_repeating_ixc_ok)
-{
-  char validationMessage[100] = "";
   ck_assert_int_eq(true, validate_roman_numeral("III", validationMessage));
   ck_assert_str_eq("", validationMessage); 
 }
@@ -38,13 +32,19 @@ START_TEST (test_validate_max_count_vld)
   ck_assert_int_eq(false, validate_roman_numeral("DD", validationMessage));
   ck_assert_str_eq("Invalid roman numeral: more than one consecutive V, L, or D", validationMessage);
 
+  ck_assert_int_eq(true, validate_roman_numeral("DLV", validationMessage));
+  ck_assert_str_eq("", validationMessage);
 }
 END_TEST
 
-START_TEST (test_validate_max_count_vld_ok)
+START_TEST (test_validate_max_numeral)
 {
   char validationMessage[100] = "";
-  ck_assert_int_eq(true, validate_roman_numeral("DLV", validationMessage));
+
+  ck_assert_int_eq(false, validate_roman_numeral("MMMM", validationMessage));
+  ck_assert_str_eq("Roman numeral too large.", validationMessage);
+  
+  ck_assert_int_eq(true, validate_roman_numeral("MMMCMXCIX", validationMessage));
   ck_assert_str_eq("", validationMessage);
 }
 END_TEST
@@ -57,9 +57,8 @@ Suite* roman_validation_suite(void) {
     tc_core = tcase_create("validate-roman");
 
     tcase_add_test(tc_core, test_validate_max_repeating_ixc);
-    tcase_add_test(tc_core, test_validate_max_repeating_ixc_ok);
     tcase_add_test(tc_core, test_validate_max_count_vld);
-    tcase_add_test(tc_core, test_validate_max_count_vld_ok);
+    tcase_add_test(tc_core, test_validate_max_numeral);
 
     
     suite_add_tcase(s, tc_core);
