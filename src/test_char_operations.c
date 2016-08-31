@@ -3,13 +3,6 @@
 #include "char_operations.h"
 #include "bool.h"
 
-/*
-
-char get_second(char *roman_letters);
-bool exists_first(char *roman_letters);
-bool exists_second(char *roman_letters);
- */
-
 START_TEST (test_exists_first)
 {
   ck_assert_int_eq(true, exists_first("X")); 
@@ -38,8 +31,23 @@ START_TEST (test_get_second)
   ck_assert_int_eq(' ', get_second("X Z")); 
 }
 END_TEST
+ 
+START_TEST (test_count_consecutive)
+{
+  ck_assert_int_eq(1, count_consecutive("IX", 'I'));
+  ck_assert_int_eq(0, count_consecutive("IX", 'Y'));
+  ck_assert_int_eq(4, count_consecutive("IIII", 'I'));
+  ck_assert_int_eq(4, count_consecutive("XIIIIX", 'I'));
+}
+END_TEST
 
-Suite * strings_suite(void) {
+START_TEST (test_count_consecutive_with_others)
+{
+  ck_assert_int_eq(4, count_consecutive("IXIIIIXI", 'I'));
+}
+END_TEST
+
+Suite * char_operations_suite(void) {
     Suite *s;
     TCase *tc_core;
 
@@ -50,6 +58,8 @@ Suite * strings_suite(void) {
     tcase_add_test(tc_core, test_get_first);
     tcase_add_test(tc_core, test_exists_second);
     tcase_add_test(tc_core, test_get_second);
+    tcase_add_test(tc_core, test_count_consecutive);
+    tcase_add_test(tc_core, test_count_consecutive_with_others);
     suite_add_tcase(s, tc_core);
 
     return s;
@@ -60,7 +70,7 @@ int main(int argc, char* argv[]) {
     Suite *s;
     SRunner *sr;
 
-    s = strings_suite();
+    s = char_operations_suite();
     sr = srunner_create(s);
 
     srunner_run_all(sr, CK_NORMAL);

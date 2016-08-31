@@ -16,9 +16,9 @@ $(info $$ROMAN_SOURCE_FILES is [${ROMAN_SOURCE_FILES}])
 $(info $$ROMAN_SOURCENAMES is [${ROMAN_SOURCE_NAMES}])
 $(info $$ROMAN_OBJS is [${ROMAN_OBJS}])
 
-all: test_roman_runner test_strings
+all: test_roman_runner test_char_operations
 	./test_roman_runner
-	./test_strings
+	./test_char_operations
 
 # will build the roman calculator main that runs all tests 
 test_roman_runner: $(ROMAN_OBJS)
