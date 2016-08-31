@@ -24,14 +24,11 @@ int count_consecutive(char* str, char c) {
   int current_count = 0;
   int max_count = 0;
   int i;
-  bool currently_matching = false;
   for (i=0; i < strlen(str); i++) {
     if (str[i] == c) {
       current_count++;
-      currently_matching = true;
     }
     else {
-      currently_matching = false;
       current_count = 0;
     }
     if (current_count > max_count) {
