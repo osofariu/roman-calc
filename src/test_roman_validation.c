@@ -16,6 +16,15 @@ START_TEST (test_validate_max_repeating_ixc)
 }
 END_TEST
 
+
+START_TEST (test_validate_max_repeating_ixc_ok)
+{
+  char validationMessage[100] = "";
+  ck_assert_int_eq(true, validate_roman_numeral("III", validationMessage));
+  ck_assert_str_eq("", validationMessage); 
+}
+END_TEST
+
 Suite* roman_validation_suite(void) {
     Suite *s;
     TCase *tc_core;
@@ -24,6 +33,9 @@ Suite* roman_validation_suite(void) {
     tc_core = tcase_create("validate-roman");
 
     tcase_add_test(tc_core, test_validate_max_repeating_ixc);
+    tcase_add_test(tc_core, test_validate_max_repeating_ixc_ok);
+
+    
     suite_add_tcase(s, tc_core);
 
     return s;
