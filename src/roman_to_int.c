@@ -2,7 +2,7 @@
 #include <check.h>
 #include "roman.h"
 #include "roman_to_int.h"
-#include "strings.h"
+#include "char_operations.h"
 #include "bool.h"
 
 const struct RomanLetter romanLetters[] = {

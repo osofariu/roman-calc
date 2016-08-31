@@ -3,12 +3,12 @@ CFLAGS=-Wall -g
 LDFLAGS= -Wall -L/usr/lib/x86_64-linux-gnu -L/lib/x86_64-linux-gnu -L /lib64  
 LIBS= -lcheck -lm -lrt -lpthread -lsubunit
 
-TARGETS := test_roman_runner test_strings
+TARGETS := test_roman_runner test_char_operations
 OBJDIR := obj
 SRCDIR := src
 INCLUDEDIR := include
 
-ROMAN_SOURCE_FILES := $(wildcard src/*roman*.c) strings.c
+ROMAN_SOURCE_FILES := $(wildcard src/*roman*.c) char_operations.c
 ROMAN_SOURCE_NAMES := $(patsubst src/%,%,$(ROMAN_SOURCE_FILES))
 ROMAN_OBJS :=  $(patsubst %,$(OBJDIR)/%,$(ROMAN_SOURCE_NAMES:c=o))
 
@@ -31,7 +31,7 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c | create-obj
 	$(CC) $(CFLAGS) -o $@ -I$(INCLUDEDIR) -c $<
 
 # will buile the string library main that run all tests
-test_strings: $(OBJDIR)/strings.o $(OBJDIR)/test_strings.o
+test_char_operations: $(OBJDIR)/char_operations.o $(OBJDIR)/test_char_operations.o
 	$(CC) $(LDFLAGS) $^ $(LIBS) -o $@ 
 
 clean:

@@ -1,6 +1,6 @@
 #include <check.h>
 #include <stdlib.h>
-#include "strings.h"
+#include "char_operations.h"
 #include "bool.h"
 
 /*
