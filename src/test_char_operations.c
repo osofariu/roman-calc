@@ -32,7 +32,7 @@ START_TEST (test_get_second)
 }
 END_TEST
  
-START_TEST (test_count_consecutive)
+START_TEST (test_count_consecutive_numeral)
 {
   ck_assert_int_eq(1, count_consecutive("IX", 'I'));
   ck_assert_int_eq(0, count_consecutive("IX", 'Y'));
@@ -41,9 +41,16 @@ START_TEST (test_count_consecutive)
 }
 END_TEST
 
-START_TEST (test_count_consecutive_with_others)
+START_TEST (test_count_consecutive_numeral_with_others)
 {
   ck_assert_int_eq(4, count_consecutive("IXIIIIXI", 'I'));
+}
+END_TEST
+
+START_TEST (test_count_numeral)
+{
+  ck_assert_int_eq(6, count_numeral("IXIIIIXI", 'I'));
+  ck_assert_int_eq(0, count_numeral("ABC", 'D'));
 }
 END_TEST
 
@@ -58,8 +65,9 @@ Suite * char_operations_suite(void) {
     tcase_add_test(tc_core, test_get_first);
     tcase_add_test(tc_core, test_exists_second);
     tcase_add_test(tc_core, test_get_second);
-    tcase_add_test(tc_core, test_count_consecutive);
-    tcase_add_test(tc_core, test_count_consecutive_with_others);
+    tcase_add_test(tc_core, test_count_consecutive_numeral);
+    tcase_add_test(tc_core, test_count_consecutive_numeral_with_others);
+    tcase_add_test(tc_core, test_count_numeral);
     suite_add_tcase(s, tc_core);
 
     return s;

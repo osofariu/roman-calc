@@ -37,3 +37,13 @@ int count_consecutive(char* str, char c) {
   }
   return max_count;
 }
+
+int count_numeral(char* numeral, char c) {
+  int total_count = 0;
+  int i;
+  for (i = 0; i < strlen(numeral); i++) {
+    if (numeral[i] == c)
+      total_count++;
+  }
+  return total_count;
+}
