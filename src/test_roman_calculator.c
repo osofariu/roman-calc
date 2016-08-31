@@ -1,9 +1,11 @@
 #include <check.h>
 #include <stdlib.h>
+#include "roman_calculator.h"
 
 START_TEST (test_add_two_roman_numerals)
 {
-  ck_assert_str_eq("II", add_roman_numerals("I","I"));
+  char romanSum[50];
+  ck_assert_str_eq("II", add_roman_numerals("I","I", romanSum));
 }
 END_TEST
 
