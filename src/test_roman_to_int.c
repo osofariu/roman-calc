@@ -1,5 +1,4 @@
 #include <check.h>
-#include <stdlib.h>
 #include "roman_to_int.h"
 
 START_TEST (test_roman_values)

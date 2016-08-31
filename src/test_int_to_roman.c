@@ -1,5 +1,4 @@
 #include <check.h>
-#include <stdlib.h>
 #include "int_to_roman.h"
 
 START_TEST (test_int_to_single_roman_numeral_group)

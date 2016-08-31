@@ -1,5 +1,4 @@
 #include <check.h>
-#include <stdlib.h>
 #include "roman_calculator.h"
 
 START_TEST (test_add_two_roman_numerals)
