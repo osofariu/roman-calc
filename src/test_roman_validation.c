@@ -30,7 +30,22 @@ START_TEST (test_validate_max_count_vld)
 {
   char validationMessage[100] = "";
   ck_assert_int_eq(false, validate_roman_numeral("VV", validationMessage));
-  ck_assert_str_eq("Invalid roman numeral: more than one consecutive V", validationMessage);
+  ck_assert_str_eq("Invalid roman numeral: more than one consecutive V, L, or D", validationMessage);
+
+  ck_assert_int_eq(false, validate_roman_numeral("LL", validationMessage));
+  ck_assert_str_eq("Invalid roman numeral: more than one consecutive V, L, or D", validationMessage);
+
+  ck_assert_int_eq(false, validate_roman_numeral("DD", validationMessage));
+  ck_assert_str_eq("Invalid roman numeral: more than one consecutive V, L, or D", validationMessage);
+
+}
+END_TEST
+
+START_TEST (test_validate_max_count_vld_ok)
+{
+  char validationMessage[100] = "";
+  ck_assert_int_eq(true, validate_roman_numeral("DLV", validationMessage));
+  ck_assert_str_eq("", validationMessage);
 }
 END_TEST
 
@@ -44,6 +59,7 @@ Suite* roman_validation_suite(void) {
     tcase_add_test(tc_core, test_validate_max_repeating_ixc);
     tcase_add_test(tc_core, test_validate_max_repeating_ixc_ok);
     tcase_add_test(tc_core, test_validate_max_count_vld);
+    tcase_add_test(tc_core, test_validate_max_count_vld_ok);
 
     
     suite_add_tcase(s, tc_core);

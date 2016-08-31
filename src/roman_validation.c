@@ -23,7 +23,7 @@ bool validate_consecutive_ixc_ct(char* roman_numeral, char* message) {
 bool validate_char_ct(char* roman_numeral, char c, int max_count, char* message) {
   int count = count_numeral(roman_numeral, c);
   if (count > max_count) {
-    strcpy(message, "Invalid roman numeral: more than one consecutive V");
+    strcpy(message, "Invalid roman numeral: more than one consecutive V, L, or D");
     return false;
   }
   return true;
