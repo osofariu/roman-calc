@@ -22,25 +22,25 @@ test_strings: $(OBJDIR)/strings.o $(OBJDIR)/test_strings.o
 createobj:
 	mkdir -p $(OBJDIR)
 
-$(OBJDIR)/test_roman_runner.o: $(SRCDIR)/test_roman_runner.c
+$(OBJDIR)/test_roman_runner.o: $(SRCDIR)/test_roman_runner.c | createobj
 	$(CC) $(CFLAGS) -o $@ -I$(INCLUDEDIR) -c $<
 
-$(OBJDIR)/test_roman_to_int.o: $(SRCDIR)/test_roman_to_int.c
+$(OBJDIR)/test_roman_to_int.o: $(SRCDIR)/test_roman_to_int.c | createobj
 	$(CC) $(CFLAGS) -o $@ -I$(INCLUDEDIR) -c $<
 
-$(OBJDIR)/test_int_to_roman.o: $(SRCDIR)/test_int_to_roman.c
+$(OBJDIR)/test_int_to_roman.o: $(SRCDIR)/test_int_to_roman.c | createobj
 	$(CC) $(CFLAGS) -o $@ -I$(INCLUDEDIR) -c $<
 
-$(OBJDIR)/roman_to_int.o: $(SRCDIR)/roman_to_int.c
+$(OBJDIR)/roman_to_int.o: $(SRCDIR)/roman_to_int.c | createobj
 	$(CC) $(CFLAGS) -o $@ -I$(INCLUDEDIR) -c $<
 
-$(OBJDIR)/int_to_roman.o: $(SRCDIR)/int_to_roman.c
+$(OBJDIR)/int_to_roman.o: $(SRCDIR)/int_to_roman.c | createobj
 	$(CC) $(CFLAGS) -o $@ -I$(INCLUDEDIR) -c $<
 
-$(OBJDIR)/test_strings.o: $(SRCDIR)/test_strings.c
+$(OBJDIR)/test_strings.o: $(SRCDIR)/test_strings.c | createobj
 	$(CC) $(CFLAGS) -o $@ -I$(INCLUDEDIR) -c $<
 
-$(OBJDIR)/strings.o: $(SRCDIR)/strings.c 
+$(OBJDIR)/strings.o: $(SRCDIR)/strings.c  | createobj
 	$(CC) $(CFLAGS) -o $@ -I$(INCLUDEDIR) -c $<
 
 clean:
