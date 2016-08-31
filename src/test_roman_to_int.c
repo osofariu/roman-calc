@@ -35,8 +35,8 @@ Suite * roman_to_int_suite(void) {
     Suite *s;
     TCase *tc_core;
 
-    s = suite_create("Roman Numerals");
-    tc_core = tcase_create("roman-values");
+    s = suite_create("Roman To Int");
+    tc_core = tcase_create("roman-to-int");
 
     tcase_add_test(tc_core, test_roman_values);
     tcase_add_test(tc_core, test_roman_values_additive);

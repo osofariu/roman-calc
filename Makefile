@@ -1,7 +1,7 @@
 SHELL = /bin/sh
 CFLAGS=-Wall -g 
 LDFLAGS= -Wall -L/usr/lib/x86_64-linux-gnu -L/lib/x86_64-linux-gnu -L /lib64  
-LIBS= -l:libcheck.a  -lm -lrt -lpthread -lsubunit
+LIBS= -lcheck -lm -lrt -lpthread -lsubunit
 
 TARGETS := test_roman_runner test_strings
 OBJDIR := obj
