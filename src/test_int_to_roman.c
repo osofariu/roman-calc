@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "int_to_roman.h"
 
-START_TEST (test_int_to_single_roman_letter)
+START_TEST (test_int_to_single_roman_numeral_group)
 {
   char expectedNumeral[50] = "";
   ck_assert_str_eq("I", roman_numeral(1, expectedNumeral));
@@ -21,6 +21,15 @@ START_TEST (test_int_to_single_roman_letter)
 }
 END_TEST
 
+START_TEST (test_int_to_compound_roman_numeral_groups)
+{
+  char expectedNumeral[50] = "";
+  ck_assert_str_eq("MMXVI", roman_numeral(2016, expectedNumeral));
+  ck_assert_str_eq("MCMXCIV", roman_numeral(1994, expectedNumeral));
+  ck_assert_str_eq("MMMCMXCIX", roman_numeral(3999, expectedNumeral));
+}
+END_TEST
+
 Suite* int_to_roman_suite(void) {
     Suite *s;
     TCase *tc_core;
@@ -28,7 +37,8 @@ Suite* int_to_roman_suite(void) {
     s = suite_create("Int to Roman");
     tc_core = tcase_create("int-to-roman");
 
-    tcase_add_test(tc_core, test_int_to_single_roman_letter);
+    tcase_add_test(tc_core, test_int_to_single_roman_numeral_group);
+    tcase_add_test(tc_core, test_int_to_compound_roman_numeral_groups);
     suite_add_tcase(s, tc_core);
 
     return s;
