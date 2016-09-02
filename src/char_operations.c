@@ -1,5 +1,6 @@
 #include "bool.h"
 #include <string.h>
+#include "char_operations.h"
 
 char get_first(char *letters) {
   return *letters;

@@ -58,8 +58,8 @@ Suite * char_operations_suite(void) {
     Suite *s;
     TCase *tc_core;
 
-    s = suite_create("String Operations");
-    tc_core = tcase_create("string-ops");
+    s = suite_create("Char Operations");
+    tc_core = tcase_create("char-ops");
 
     tcase_add_test(tc_core, test_exists_first);
     tcase_add_test(tc_core, test_get_first);
@@ -73,16 +73,3 @@ Suite * char_operations_suite(void) {
     return s;
 }
 
-int main(int argc, char* argv[]) {
-    int number_failed;
-    Suite *s;
-    SRunner *sr;
-
-    s = char_operations_suite();
-    sr = srunner_create(s);
-
-    srunner_run_all(sr, CK_NORMAL);
-    number_failed = srunner_ntests_failed(sr);
-    srunner_free(sr);
-    return (number_failed == 0) ? EXIT_SUCCESS : EXIT_FAILURE;
- }
