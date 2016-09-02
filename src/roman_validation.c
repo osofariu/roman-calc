@@ -1,3 +1,4 @@
+#include <string.h>
 #include "bool.h"
 #include "roman_validation.h"
 #include "char_operations.h"
@@ -48,9 +49,24 @@ bool validate_max_numeral(char* roman_numeral, char *message) {
   return true;
 }
 
+bool validate_roman_numeral_letters(char *roman_numeral, char* message) {
+  char validChars[] = "IVXLCDM";
+  int i;
+  for (i = 0; i < strlen(roman_numeral); i++) {
+    if (strchr(validChars, roman_numeral[i]) == NULL) {
+      strcpy(message, "Roman numeral contains invalid characters");
+      return false;
+    }
+  }
+  strcpy(message, "");
+  return(true);
+}
+
 bool validate_roman_numeral(char* roman_numeral, char* message) {
+  if (validate_roman_numeral_letters(roman_numeral, message) == false) return false;
   if (validate_consecutive_ixc_ct(roman_numeral, message) == false) return false;
   if (validate_vld_ct(roman_numeral, message) == false) return false;
   if (validate_max_numeral(roman_numeral, message) == false) return false;
   return true;
 }
+

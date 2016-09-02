@@ -49,6 +49,19 @@ START_TEST (test_validate_max_numeral)
 }
 END_TEST
 
+START_TEST (test_validate_roman_numerals)
+{
+  char validationMessage[100] = "";
+  ck_assert_int_eq(false, validate_roman_numeral("Z", validationMessage));
+  ck_assert_str_eq("Roman numeral contains invalid characters", validationMessage);
+
+  ck_assert_int_eq(true, validate_roman_numeral("MDCLXVI", validationMessage));
+  ck_assert_str_eq("", validationMessage);
+
+}
+END_TEST
+
+
 Suite* roman_validation_suite(void) {
     Suite *s;
     TCase *tc_core;
@@ -59,7 +72,7 @@ Suite* roman_validation_suite(void) {
     tcase_add_test(tc_core, test_validate_max_repeating_ixc);
     tcase_add_test(tc_core, test_validate_max_count_vld);
     tcase_add_test(tc_core, test_validate_max_numeral);
-
+    tcase_add_test(tc_core, test_validate_roman_numerals);
     
     suite_add_tcase(s, tc_core);
 
