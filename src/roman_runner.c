@@ -8,11 +8,16 @@
 
 int main(int argc, char* argv[]) {
 
-  if (argc == 4 && strcmp(argv[1], "+")) {
+  if (argc == 4 && strcmp(argv[1], "+") == 0) {
+    char* firstRoman = argv[2];
+    char* secondRoman = argv[3];
+    char addResult[50];
 
+    add_roman_numerals(firstRoman, secondRoman, addResult);
+    printf("%s + %s = %s\n", firstRoman, secondRoman, addResult);
   }
   
-  else if (argc == 4 && strcmp(argv[1], "-")) {
+  else if (argc == 4 && strcmp(argv[1], "-") == 0) {
 
   }
 
