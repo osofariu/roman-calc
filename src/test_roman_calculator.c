@@ -4,9 +4,30 @@
 START_TEST (test_add_two_roman_numerals)
 {
   char romanSum[50];
-  ck_assert_str_eq("II", add_roman_numerals("I","I", romanSum));
-  ck_assert_str_eq("MCMLXXII", add_roman_numerals("MCMII", "LXX", romanSum));
+  char sumMessage[50];
+  ck_assert_str_eq("II", add_roman_numerals("I","I", romanSum, sumMessage));
+  ck_assert_str_eq("MCMLXXII", add_roman_numerals("MCMII", "LXX", romanSum, sumMessage));
 }
+END_TEST
+
+START_TEST (test_validate_add_two_roman_numerals)
+{
+  // TODO: intercept stderr, and make sure the correct message gets written
+  char romanSum[50];
+  char sumMessage[50];
+  ck_assert_str_eq("", add_roman_numerals("Z", "I", romanSum, sumMessage));
+  ck_assert_str_eq("", romanSum);
+  ck_assert_str_eq("Roman numeral contains invalid characters", sumMessage);
+
+  ck_assert_str_eq("", add_roman_numerals("I", "Z", romanSum, sumMessage));
+  ck_assert_str_eq("", romanSum);
+  ck_assert_str_eq("Roman numeral contains invalid characters", sumMessage);
+
+  ck_assert_str_eq("", add_roman_numerals("I", "MMMCMXCIX", romanSum, sumMessage));
+  ck_assert_str_eq("", romanSum);
+  ck_assert_str_eq("Roman numeral too large.", sumMessage);
+}
+
 END_TEST
 
 Suite *roman_calculator_suite(void) {
@@ -17,6 +38,7 @@ Suite *roman_calculator_suite(void) {
   tc_core = tcase_create("add two roman numerals");
 
   tcase_add_test(tc_core, test_add_two_roman_numerals);
+  tcase_add_test(tc_core, test_validate_add_two_roman_numerals);
   suite_add_tcase(s, tc_core);
 
   return s;
