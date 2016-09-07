@@ -4,5 +4,5 @@
 #include<check.h>
 
 Suite* int_to_roman_suite(void);
-char *roman_numeral(int roman_value, char romanNumeral[]); 
+char *int_to_roman_numeral(int roman_value, char romanNumeral[]); 
 #endif

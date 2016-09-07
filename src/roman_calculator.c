@@ -15,7 +15,7 @@ char* add_roman_numerals(char* firstNumeral, char* secondNumeral, char *resultNu
   }
 
   int sum = roman_value(firstNumeral) + roman_value(secondNumeral);
-  roman_numeral(sum, resultNumeral);
+  int_to_roman_numeral(sum, resultNumeral);
   if (validate_roman_numeral(resultNumeral, message) == false) {
     strcpy(resultNumeral, "");
     return("");

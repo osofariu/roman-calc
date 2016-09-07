@@ -14,10 +14,10 @@ int main(int argc, char* argv[]) {
     char* firstRoman = argv[2];
     char* secondRoman = argv[3];
     char message[50];
-    char addResult[50];
+    char sumResult[50];
 
-    add_roman_numerals(firstRoman, secondRoman, addResult, message);
-    printf("%s + %s = %s\n", firstRoman, secondRoman, addResult);
+    add_roman_numerals(firstRoman, secondRoman, sumResult, message);
+    printf("%s + %s = %s\n", firstRoman, secondRoman, sumResult);
   }
   
   else if (argc == 4 && strcmp(argv[1], "-") == 0) {
