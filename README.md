@@ -4,20 +4,23 @@
 
 * To compile the code and run all tests type: make
   
-  This will build all code, create roman_runner executable, and run all tests.
+    This will build all code, create roman_runner executable, and run all tests.
 
 ## Running
 
 * To see usage, just run the program without arguments:
 
   $ ./roman_runner
-  Usage: roman_runner [+ num num | - num num]
+  
+      Usage: roman_runner [+ num num | - num num]
 
 * Performing roman calculations
 
     Run the program with command-line arguments, as shown the the usage:
-    ./roman_runner + X I
-    X + I = XI
+  
+        ./roman_runner + X I
+    
+        X + I = XI
     
     The result of the roman calculation is written by the program to stdout; any errors are writte to stderr. 
 
