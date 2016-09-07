@@ -23,3 +23,24 @@ char* add_roman_numerals(char* firstNumeral, char* secondNumeral, char *resultNu
     return resultNumeral;
   }
 }
+
+char* subtract_roman_numerals(char* firstNumeral, char* secondNumeral, char *resultNumeral, char *message) {
+    if (validate_roman_numeral(firstNumeral, message) == false) {
+    strcpy(resultNumeral, "");
+    return("");
+  }
+
+  if (validate_roman_numeral(secondNumeral, message) == false) {
+    strcpy(resultNumeral, "");
+    return("");
+  }
+
+  int resultInt = roman_value(firstNumeral) - roman_value(secondNumeral);
+  int_to_roman_numeral(resultInt, resultNumeral);
+  if (validate_roman_numeral(resultNumeral, message) == false) {
+    strcpy(resultNumeral, "");
+    return("");
+  } else {
+    return resultNumeral;
+  }
+}

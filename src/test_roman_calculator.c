@@ -27,7 +27,15 @@ START_TEST (test_validate_add_two_roman_numerals)
   ck_assert_str_eq("", romanSum);
   ck_assert_str_eq("Roman numeral too large.", sumMessage);
 }
+END_TEST
 
+START_TEST (test_subtract_two_roman_numerals)
+{
+  char romanSubtract[50];
+  char subtractMessage[50];
+  ck_assert_str_eq("IV", subtract_roman_numerals("V", "I", romanSubtract, subtractMessage));
+  ck_assert_str_eq("", subtractMessage);
+}
 END_TEST
 
 Suite *roman_calculator_suite(void) {
@@ -39,6 +47,7 @@ Suite *roman_calculator_suite(void) {
 
   tcase_add_test(tc_core, test_add_two_roman_numerals);
   tcase_add_test(tc_core, test_validate_add_two_roman_numerals);
+  tcase_add_test(tc_core, test_subtract_two_roman_numerals);
   suite_add_tcase(s, tc_core);
 
   return s;
