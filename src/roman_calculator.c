@@ -6,22 +6,22 @@
 char* calc_roman_numerals(char* firstNumeral, char* secondNumeral, char *resultNumeral, char *message, int op_direction) {
   if (validate_roman_numeral(firstNumeral, message) == false) {
     strcpy(resultNumeral, "");
-    return("");
   }
-
-  if (validate_roman_numeral(secondNumeral, message) == false) {
+  else if (validate_roman_numeral(secondNumeral, message) == false) {
     strcpy(resultNumeral, "");
-    return("");
   }
-
-  int sum = roman_value(firstNumeral) + op_direction * roman_value(secondNumeral);
-  int_to_roman_numeral(sum, resultNumeral);
-  if (validate_roman_numeral(resultNumeral, message) == false) {
-    strcpy(resultNumeral, "");
-    return("");
-  } else {
-    return resultNumeral;
+  else {
+    int int_result = roman_value(firstNumeral) + op_direction * roman_value(secondNumeral);
+    if (int_result <= 0) {
+      strcpy(resultNumeral, "");
+      strcpy(message, "Subtracting two roman numerals must result in a positive numeral");
+    } else {
+      int_to_roman_numeral(int_result, resultNumeral);
+    if (validate_roman_numeral(resultNumeral, message) == false) 
+      strcpy(resultNumeral, "");  
+    }
   }
+  return resultNumeral;
 }
 
 char* add_roman_numerals(char* firstNumeral, char* secondNumeral, char *resultNumeral, char *message) {
