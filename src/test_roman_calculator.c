@@ -1,12 +1,13 @@
 #include <check.h>
 #include "roman_calculator.h"
+#include "roman_validation.h"
 #include "roman.h"
 
 START_TEST (test_add_two_roman_numerals)
 {
-  char romanSum[MAX_MESSAGE_SIZE];
+  char romanSum[MAX_NUMERAL_SIZE];
   char sumMessage[MAX_MESSAGE_SIZE];
-  add_roman_numerals("I","I", romanSum, sumMessage);
+  ck_assert_int_eq(CODE_SUCCESS, add_roman_numerals("I","I", romanSum, sumMessage));
   ck_assert_str_eq("II",romanSum);
 
   add_roman_numerals("MCMII", "LXX", romanSum, sumMessage);
@@ -16,7 +17,6 @@ END_TEST
 
 START_TEST (test_validate_add_two_roman_numerals)
 {
-  // TODO: intercept stderr, and make sure the correct message gets written
   char romanSum[MAX_NUMERAL_SIZE];
   char sumMessage[MAX_MESSAGE_SIZE];
   add_roman_numerals("Z", "I", romanSum, sumMessage);
@@ -30,7 +30,7 @@ START_TEST (test_validate_add_two_roman_numerals)
 
   add_roman_numerals("I", "MMMCMXCIX", romanSum, sumMessage);
   ck_assert_str_eq("", romanSum);
-  ck_assert_str_eq("Roman numeral too large.", sumMessage);
+  ck_assert_str_eq("Roman numeral too large", sumMessage);
 }
 END_TEST
 
