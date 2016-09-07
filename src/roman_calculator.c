@@ -16,17 +16,17 @@ int calc_roman_numerals(char* firstNumeral, char* secondNumeral, char *resultNum
   if (result != CODE_SUCCESS) 
     return result;
 
-  int numericResult = roman_value(firstNumeral) + op_direction * roman_value(secondNumeral);
+  int numericResult = value_of_roman_numeral(firstNumeral) + op_direction * value_of_roman_numeral(secondNumeral);
   if (numericResult <= 0) {
     strcpy(message, "Subtracting two roman numerals must result in a positive numeral");
     return CODE_NEGATIVE_RESULT;
-  } else {
-    int_to_roman_numeral(numericResult, resultNumeral);
-    result = validate_roman_numeral(resultNumeral, message); 
-    if (result != CODE_SUCCESS) {
-      strcpy(resultNumeral, ""); // override, since it's invalid
-      return result;
-    }
+  }
+
+  int_to_roman_numeral(numericResult, resultNumeral);
+  result = validate_roman_numeral(resultNumeral, message); 
+  if (result != CODE_SUCCESS) {
+    strcpy(resultNumeral, ""); // override, since it's invalid
+    return result;
   }  
   return CODE_SUCCESS;
 }

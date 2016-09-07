@@ -84,7 +84,6 @@ END_TEST
 
 START_TEST (when_subtracting_two_romans_output_goes_to_stdout)
 {
-  
   setup_output();
 
   char* args[4] = {"prog_name", "-", "II", "I"};
@@ -108,6 +107,7 @@ Suite * roman_runner_suite(void) {
     tc_core = tcase_create("roman-to-int");
 
     tcase_add_test(tc_core, when_main_called_without_args_print_usage_to_strerr);
+
     tcase_add_test(tc_core, when_adding_two_romans_output_goes_to_stdout);
     tcase_add_test(tc_core, when_adding_two_romans_error_reported_on_stderr);
     

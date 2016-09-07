@@ -41,7 +41,7 @@ bool validate_vld_ct(char *roman_numeral, char *message) {
 
 bool validate_max_numeral(char* roman_numeral, char *message) {
   strcpy(message, "");
-  int romanValue = roman_value(roman_numeral);
+  int romanValue = value_of_roman_numeral(roman_numeral);
   return (romanValue <= 3999); 
 }
 

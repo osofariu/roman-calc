@@ -30,7 +30,7 @@ bool current_letter_subtracts_next(char *roman_letters) {
   return false;
 }
 
-int roman_value(char *roman_str) {
+int value_of_roman_numeral(char *roman_str) {
   int val = 0;
   while (exists_first(roman_str)) {
     if (current_letter_subtracts_next(roman_str) == true)
