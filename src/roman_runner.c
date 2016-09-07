@@ -6,6 +6,7 @@
 #include "roman_calculator.h"
 #include "roman_validation.h"
 #include "char_operations.h"
+#include "test_roman_runner.h"
 
 int main(int argc, char* argv[]) {
 
@@ -30,6 +31,7 @@ int main(int argc, char* argv[]) {
     srunner_add_suite(sr, int_to_roman_suite());
     srunner_add_suite(sr, roman_validation_suite());
     srunner_add_suite(sr, char_operations_suite());
+    srunner_add_suite(sr, roman_runner_suite());
     
     srunner_run_all(sr, CK_NORMAL);
     number_failed = srunner_ntests_failed(sr);
@@ -37,7 +39,7 @@ int main(int argc, char* argv[]) {
     return (number_failed == 0) ? EXIT_SUCCESS : EXIT_FAILURE;
   }
   else {
-    printf("Usage: roman_runner [+ num num | - num num]\n");
+    fprintf(stderr, "Usage: roman_runner [+ num num | - num num]\n");
     return -1;
   }
 }
