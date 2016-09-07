@@ -1,9 +1,10 @@
 #include <check.h>
 #include "int_to_roman.h"
+#include "roman.h"
 
 START_TEST (test_int_to_single_roman_numeral_group)
 {
-  char expectedNumeral[50] = "";
+  char expectedNumeral[MAX_NUMERAL_SIZE];
   ck_assert_str_eq("I", int_to_roman_numeral(1, expectedNumeral));
   ck_assert_str_eq("IV", int_to_roman_numeral(4, expectedNumeral));
   ck_assert_str_eq("V", int_to_roman_numeral(5, expectedNumeral));
@@ -22,7 +23,7 @@ END_TEST
 
 START_TEST (test_int_to_compound_roman_numeral_groups)
 {
-  char expectedNumeral[50] = "";
+  char expectedNumeral[MAX_NUMERAL_SIZE];
   ck_assert_str_eq("MMXVI", int_to_roman_numeral(2016, expectedNumeral));
   ck_assert_str_eq("MCMXCIV", int_to_roman_numeral(1994, expectedNumeral));
   ck_assert_str_eq("MMMCMXCIX", int_to_roman_numeral(3999, expectedNumeral));

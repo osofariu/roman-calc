@@ -1,5 +1,5 @@
-#ifndef STRINGS_H
-#define STRINGS_H
+#ifndef FILE_CHAR_OPERATIONS_H
+#define FILE_CHAR_OPERATIONS_H
 
 #include "bool.h"
 #include <check.h>

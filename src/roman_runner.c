@@ -7,14 +7,15 @@
 #include "roman_validation.h"
 #include "char_operations.h"
 #include "test_roman_runner.h"
+#include "roman.h"
 
 int main(int argc, char* argv[]) {
 
   if (argc == 4 && strcmp(argv[1], "+") == 0) {
     char* firstRoman = argv[2];
     char* secondRoman = argv[3];
-    char message[50];
-    char sumResult[50];
+    char message[MAX_MESSAGE_SIZE];
+    char sumResult[MAX_NUMERAL_SIZE];
 
     add_roman_numerals(firstRoman, secondRoman, sumResult, message);
     printf("%s + %s = %s\n", firstRoman, secondRoman, sumResult);

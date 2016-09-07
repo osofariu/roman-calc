@@ -1,10 +1,11 @@
 #include <check.h>
 #include "roman_validation.h"
 #include "bool.h"
+#include "roman.h"
 
 START_TEST (test_validate_max_repeating_ixc)
 {
-  char validationMessage[100] = "";
+  char validationMessage[MAX_MESSAGE_SIZE];
   ck_assert_int_eq(false, validate_roman_numeral("IIII", validationMessage));
   ck_assert_str_eq("Invalid roman numeral: too many consecutive I, X, or C", validationMessage); 
   
@@ -22,7 +23,7 @@ END_TEST
 
 START_TEST (test_validate_max_count_vld)
 {
-  char validationMessage[100] = "";
+  char validationMessage[MAX_MESSAGE_SIZE];
   ck_assert_int_eq(false, validate_roman_numeral("VV", validationMessage));
   ck_assert_str_eq("Invalid roman numeral: more than one consecutive V, L, or D", validationMessage);
 
@@ -39,7 +40,7 @@ END_TEST
 
 START_TEST (test_validate_max_numeral)
 {
-  char validationMessage[100] = "";
+  char validationMessage[MAX_MESSAGE_SIZE];
 
   ck_assert_int_eq(false, validate_roman_numeral("MMMM", validationMessage));
   ck_assert_str_eq("Roman numeral too large.", validationMessage);
@@ -51,7 +52,7 @@ END_TEST
 
 START_TEST (test_validate_roman_numerals)
 {
-  char validationMessage[100] = "";
+  char validationMessage[MAX_MESSAGE_SIZE];
   ck_assert_int_eq(false, validate_roman_numeral("Z", validationMessage));
   ck_assert_str_eq("Roman numeral contains invalid characters", validationMessage);
 

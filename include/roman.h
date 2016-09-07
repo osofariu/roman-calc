@@ -12,6 +12,7 @@ struct RomanLetter {
   int value;
 };
   
-
+#define MAX_MESSAGE_SIZE 200
+#define MAX_NUMERAL_SIZE 50
 
 #endif
