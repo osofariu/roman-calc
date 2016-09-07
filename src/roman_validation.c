@@ -58,7 +58,7 @@ bool validate_roman_numeral_letters(char *roman_numeral, char* message) {
   return(true);
 }
 
-bool validate_roman_numeral(char* roman_numeral, char* message) {
+int validate_roman_numeral(char* roman_numeral, char* message) {
   int validationCode;
   
   validationCode = validate_roman_numeral_letters(roman_numeral, message);

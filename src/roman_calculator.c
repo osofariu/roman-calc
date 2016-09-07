@@ -18,7 +18,7 @@ int calc_roman_numerals(char* firstNumeral, char* secondNumeral, char *resultNum
 
   int numericResult = value_of_roman_numeral(firstNumeral) + op_direction * value_of_roman_numeral(secondNumeral);
   if (numericResult <= 0) {
-    strcpy(message, "Subtracting two roman numerals must result in a positive numeral");
+    strcpy(message, MSG_NEGATIVE_RESULT);
     return CODE_NEGATIVE_RESULT;
   }
 

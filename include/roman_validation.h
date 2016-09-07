@@ -5,7 +5,7 @@
 #include <check.h>
 
 Suite* roman_validation_suite(void);
-bool validate_roman_numeral(char* romanNumeral, char* message);
+int validate_roman_numeral(char* romanNumeral, char* message);
 
 #define CODE_SUCCESS 0
 
@@ -22,5 +22,6 @@ bool validate_roman_numeral(char* romanNumeral, char* message);
 #define CODE_INVALID_NUMERAL_CHAR 4
 
 #define CODE_NEGATIVE_RESULT 5
+#define MSG_NEGATIVE_RESULT "Subtracting two roman numerals must result in a positive numeral"
 
 #endif
