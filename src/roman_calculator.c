@@ -24,7 +24,7 @@ int calc_roman_numerals(char* firstNumeral, char* secondNumeral, char *resultNum
     int_to_roman_numeral(numericResult, resultNumeral);
     result = validate_roman_numeral(resultNumeral, message); 
     if (result != CODE_SUCCESS) {
-      strcpy(resultNumeral, "");
+      strcpy(resultNumeral, ""); // override, since it's invalid
       return result;
     }
   }  

@@ -10,21 +10,27 @@
 #include "roman.h"
 
 int main(int argc, char* argv[]) {
-
-  if (argc == 4 && strcmp(argv[1], "+") == 0) {
+  
+  if (argc == 4 && ((strcmp(argv[1], "+") == 0) || (strcmp(argv[1], "-") == 0))) {
+    char* operation = argv[1];
     char* firstRoman = argv[2];
     char* secondRoman = argv[3];
-    char message[MAX_MESSAGE_SIZE];
-    char sumResult[MAX_NUMERAL_SIZE];
+    char message[MAX_MESSAGE_SIZE] = "";
+    char sumResult[MAX_NUMERAL_SIZE] = "";
 
-    add_roman_numerals(firstRoman, secondRoman, sumResult, message);
-    printf("%s + %s = %s\n", firstRoman, secondRoman, sumResult);
+    int result;
+    if (strcmp(operation, "+") == 0)
+      result = add_roman_numerals(firstRoman, secondRoman, sumResult, message);
+    else
+      result = subtract_roman_numerals(firstRoman, secondRoman, sumResult, message);
+    
+    if (result == CODE_SUCCESS) 
+      printf("%s %s %s = %s\n", firstRoman, operation, secondRoman, sumResult);
+    else {
+      fprintf(stderr, "%s\n", message);
+    }
   }
   
-  else if (argc == 4 && strcmp(argv[1], "-") == 0) {
-
-  }
-
   else if (argc == 2 && strcmp(argv[1], "tests") == 0) {
     int number_failed;
     SRunner* sr = srunner_create(roman_calculator_suite());
